@@ -25,7 +25,8 @@ def setup():
     sql_command = """CREATE TABLE reservations(
     res_num INTEGER PRIMARY KEY,
     room_num INTEGER,
-    guests INTEGER,
+    name TEXT,
+    guest_num INTEGER,
     check_in TEXT,
     check_out TEXT)
     """
@@ -68,4 +69,4 @@ else:
         setup()
     else:
         print("Setup aborted")
-        time.sleep(3)
+        time.sleep(1)
