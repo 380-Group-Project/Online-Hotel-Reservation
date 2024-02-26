@@ -15,20 +15,28 @@ def reserve(room, name, guests, indate, outdate):
     crsr = connection.cursor()
     collision = True
     res_id = random.randint(100000,999999)
-    #generate reservation IDs until a unique one is generated
-    # while collision == True:
-    #     res_id = random.randint(1,65536)
-    #     print(res_id)
-    #     collision = False
-    #     crsr.execute('SELECT EXISTS (SELECT 1 FROM reservations WHERE res_num = 1)')
-    #     if crsr.fetchone():
-    #         collision = True
-        
+    crsr.execute('SELECT EXISTS (SELECT 1 FROM reservations WHERE res_num = ?)',(res_id,))
+    collision = crsr.fetchone()
+    # print(res_id)
+    # print(collision)
     
+    #generate reservation IDs until a unique one is generated
+    while collision == (1,):
+        res_id = random.randint(100000,999999)
+        # print(res_id)
+        crsr.execute('SELECT EXISTS (SELECT 1 FROM reservations WHERE res_num = ?)',(res_id,))
+        collision = crsr.fetchone()
+        # print(collision)
+
+        
+    # crsr.execute('SELECT EXISTS (SELECT 1 FROM reservations WHERE res_num = 686963)')
+    # print(crsr.fetchone())
     crsr.execute('INSERT INTO reservations VALUES(?,?,?,?,?,?)', (res_id, room, name, guests, indate, outdate))
     
     connection.commit()
     
     connection.close()
+    
+    return res_id
     
 reserve(101, "Jane Doe", 1, "2024-01-01", "2024-01-02")
