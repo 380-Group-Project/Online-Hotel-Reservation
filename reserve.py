@@ -1,7 +1,5 @@
 # -*- coding: utf-8 -*-
 import sqlite3
-import os
-import time
 import random
 
 
@@ -39,4 +37,12 @@ def reserve(room, name, guests, indate, outdate):
     
     return res_id
     
-reserve(101, "Jane Doe", 1, "2024-01-01", "2024-01-02")
+#function to cancel a reservation based on its ID 
+def cancel(res_id):
+    connection = sqlite3.connect(path)
+    
+    crsr = connection.cursor()
+    #simply deletes the row containing the associated ID 
+    crsr.execute('DELETE FROM reservations WHERE res_id = ?',(res_id,))
+    
+#reserve(101, "Jane Doe", 1, "2024-01-01", "2024-01-02")
