@@ -7,11 +7,12 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.demo.SceneController">
    <children>
-      <Button layoutX="195.0" layoutY="225.0" mnemonicParsing="false" onAction="#switchToScene1" prefHeight="63.0" prefWidth="211.0" text="Switch to Scene 1" />
+      <Button layoutX="195.0" layoutY="200.0" mnemonicParsing="false" onAction="#switchToScene1" prefHeight="63.0" prefWidth="211.0" text="Switch to Scene 1" />
       <Label alignment="CENTER" layoutX="185.0" layoutY="56.0" prefHeight="63.0" prefWidth="230.0" text="This is Scene 3">
          <font>
             <Font size="18.0" />
          </font>
       </Label>
+      <Button layoutX="195.0" layoutY="288.0" mnemonicParsing="false" onAction="#switchToHome" prefHeight="63.0" prefWidth="211.0" text="Switch to Menu" />
    </children>
 </AnchorPane>

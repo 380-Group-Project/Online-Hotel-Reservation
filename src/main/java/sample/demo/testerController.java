@@ -30,13 +30,13 @@ public class testerController {
 
         switch (sceneName) {
             case "Select room type":
-                root = FXMLLoader.load(getClass().getResource("Scene1.fxml"));
-                break;
-            case "Reserve Room":
                 root = FXMLLoader.load(getClass().getResource("Scene2.fxml"));
                 break;
+            case "Reserve Room":
+                root = FXMLLoader.load(getClass().getResource("Scene3.fxml"));
+                break;
             case "Cancel Room":
-                root = FXMLLoader.load((getClass().getResource("Scene3.fxml")));
+                root = FXMLLoader.load((getClass().getResource("Scene4.fxml")));
                 break;
         }
 

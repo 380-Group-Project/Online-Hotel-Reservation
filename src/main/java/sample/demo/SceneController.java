@@ -15,7 +15,7 @@ public class SceneController {
     private FXMLLoader fxmlLoader;
     public void switchToScene1(ActionEvent event) throws IOException {
 
-        fxmlLoader = new FXMLLoader(SceneTest.class.getResource("sample.fxml"));
+        fxmlLoader = new FXMLLoader(SceneTest.class.getResource("Scene1.fxml"));
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         scene = new Scene(fxmlLoader.load());
         stage.setScene(scene);
@@ -45,6 +45,15 @@ public class SceneController {
     public void switchToScene4(ActionEvent event) throws IOException {
 
         fxmlLoader = new FXMLLoader(SceneTest.class.getResource("Scene4.fxml"));
+        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        scene = new Scene(fxmlLoader.load());
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    public void switchToHome(ActionEvent event) throws IOException {
+
+        fxmlLoader = new FXMLLoader(SceneTest.class.getResource("sample.fxml"));
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         scene = new Scene(fxmlLoader.load());
         stage.setScene(scene);
