@@ -1,1 +1,1 @@
-Run this file using tester.java
+Run this program using tester.java
