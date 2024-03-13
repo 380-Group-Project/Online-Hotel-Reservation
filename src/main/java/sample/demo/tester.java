@@ -13,7 +13,7 @@ public class tester extends Application {
         @Override
         public void start(Stage primaryStage) throws Exception {
             Parent root = FXMLLoader.load(getClass().getResource("sample.fxml"));
-            primaryStage.setTitle("Scene Switching Example");
+            primaryStage.setTitle("Scene Switching");
             primaryStage.setScene(new Scene(root));
             primaryStage.show();
         }
@@ -21,6 +21,5 @@ public class tester extends Application {
         public static void main(String[] args) {
             launch(args);
         }
-
 
 }
