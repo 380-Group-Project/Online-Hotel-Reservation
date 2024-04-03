@@ -1,4 +1,6 @@
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 /**
@@ -66,12 +68,42 @@ public class Reservations
     public void cancel(int resId){
         String sql = "DELETE FROM reservations WHERE res_id = ?";
         try (Connection conn = this.connect();
-             PreparedStatement pstmt = conn.prepareStatement(sql)) {
+            PreparedStatement pstmt = conn.prepareStatement(sql)) {
             pstmt.setInt(1, resId);
             pstmt.executeUpdate();
 
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
+    }
+
+    /**
+     * Returns information about the reservation with the corresponding ID
+     * @param resId The ID of the relevent reservation
+     * @return Returns an ArrayList containing all information about the reservation.
+     */
+    public ArrayList<Object> getReservation(int resId){
+        ArrayList<Object> resList = new ArrayList<>();
+        String sql = "SELECT FROM reservations WHERE res_id = ?";
+        try (Connection conn = this.connect();
+            PreparedStatement pstmt = conn.prepareStatement(sql)) {
+            pstmt.setInt(1, resId);
+            ResultSet rs = pstmt.executeQuery();
+
+            while (rs.next()){
+                resList.add(rs.getInt("res_num"));
+                resList.add(rs.getInt("room_num"));
+                resList.add(rs.getString("name"));
+                resList.add(rs.getInt("guest_num"));
+                resList.add(rs.getDate("check_in"));
+                resList.add(rs.getDate("check_in"));
+            }
+            return resList;
+
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+            return resList;
+        }
+
     }
 }
