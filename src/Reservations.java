@@ -8,10 +8,6 @@ import java.util.Random;
 
 public class Reservations
 {
-    public static void main(String[] args)
-    {
-
-    }
 
     /**
      * Connect to the hotel.db database
@@ -33,11 +29,11 @@ public class Reservations
     /**
      * Insert a new row into the reservations table
      *
-     * @param room
-     * @param name
-     * @param guests
-     * @param inDate
-     * @param outDate
+     * @param room the number of the room being reserved
+     * @param name the name of the guest
+     * @param guests the number of guests
+     * @param inDate the date when they will check in
+     * @param outDate the date when they will check out
      * @return res_id
      */
     public int reserve(int room,String name,int guests,Date inDate,Date outDate){
@@ -59,6 +55,23 @@ public class Reservations
         } catch (SQLException e) {
             System.out.println(e.getMessage());
             return -1;
+        }
+    }
+
+    /**
+     * Delete a reservation from the reservations table
+     *
+     * @param resId The ID of the reservation getting cancelled.
+     */
+    public void cancel(int resId){
+        String sql = "DELETE FROM reservations WHERE res_id = ?";
+        try (Connection conn = this.connect();
+             PreparedStatement pstmt = conn.prepareStatement(sql)) {
+            pstmt.setInt(1, resId);
+            pstmt.executeUpdate();
+
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
         }
     }
 }
