@@ -4,7 +4,9 @@ CREATE TABLE Customers (
   LastName varchar(20),
   FirstName varchar(20),
   InDate date,
-  OutDate date
+  OutDate date,
+  PhoneNumber varchar(15),
+  Email varchar(100)
   );
 
 //Adding Customers
