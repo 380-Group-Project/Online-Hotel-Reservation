@@ -1,0 +1,23 @@
+//Table Created
+CREATE TABLE Customers (
+  CustomerID int,
+  LastName varchar(20),
+  FirstName varchar(20),
+  InDate date,
+  OutDate date
+  );
+
+//Adding Customers
+INSERT INTO customers
+VALUES (1, "Martinez", "Yareli", "2024-05-06", "2024-05-08", "3234318181", "yareli.martinez.676@my.csun.edu"),
+       (2, "Scott", "Emely", "2024-04-08", "2024-04-11", "2063348631", "emelyscott56@gmail.com"),
+       (3, "Chan", "Eric", "2024-03-10", "2024-03-15", "2621621585", "chaneric27@gmail.com"),
+       (4, "Houston", "Patrick", "2024-03-20", "2024-03-22", "2018748593", "patrickh167@gmail.com"),
+       (5, "Gonzalez", "Tomas", "2024-06-10", "2024-06-20", "2126583916", "tomasgonzalez002@gmail.com");
+
+SELECT * FROM Customers;
+
+//Deleting Information
+DELETE FROM Customers WHERE CustomerID = 1;
+
+SELECT * FROM Customers;
