@@ -1,0 +1,7 @@
+CREATE TABLE Customers (
+  CustomerID int,
+  LastName varchar(20),
+  FirstName varchar(20),
+  InDate date,
+  OutDate date
+  );
