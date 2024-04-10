@@ -14,7 +14,7 @@ public class testerController {
 
     @FXML
     private void initialize() {
-        myChoiceBox.getItems().addAll("Select room type","Reserve Room", "Cancel Room");
+        myChoiceBox.getItems().addAll("Select room type","Review Room", "Cancel Room");
         myChoiceBox.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
             try {
                 switchScene(newValue);
@@ -32,8 +32,8 @@ public class testerController {
             case "Select room type":
                 root = FXMLLoader.load(getClass().getResource("Scene2.fxml"));
                 break;
-            case "Reserve Room":
-                root = FXMLLoader.load(getClass().getResource("Scene3.fxml"));
+            case "Review Room":
+                root = FXMLLoader.load(getClass().getResource("ReviewTest.fxml"));
                 break;
             case "Cancel Room":
                 root = FXMLLoader.load((getClass().getResource("Scene4.fxml")));
