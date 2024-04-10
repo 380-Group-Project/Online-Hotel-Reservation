@@ -15,7 +15,7 @@ public class SceneController {
     private FXMLLoader fxmlLoader;
     public void switchToScene1(ActionEvent event) throws IOException {
 
-        fxmlLoader = new FXMLLoader(SceneTest.class.getResource("Scene1.fxml"));
+        fxmlLoader = new FXMLLoader(getClass().getResource("Scene1.fxml"));
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         scene = new Scene(fxmlLoader.load());
         stage.setScene(scene);
@@ -26,7 +26,7 @@ public class SceneController {
 
     public void switchToScene2(ActionEvent event) throws IOException {
 
-        fxmlLoader = new FXMLLoader(SceneTest.class.getResource("Scene2.fxml"));
+        fxmlLoader = new FXMLLoader(getClass().getResource("Scene2.fxml"));
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         scene = new Scene(fxmlLoader.load());
         stage.setScene(scene);
@@ -35,7 +35,7 @@ public class SceneController {
 
     public void switchToScene3(ActionEvent event) throws IOException {
 
-        fxmlLoader = new FXMLLoader(SceneTest.class.getResource("Scene3.fxml"));
+        fxmlLoader = new FXMLLoader(getClass().getResource("Scene3.fxml"));
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         scene = new Scene(fxmlLoader.load());
         stage.setScene(scene);
@@ -44,7 +44,7 @@ public class SceneController {
 
     public void switchToScene4(ActionEvent event) throws IOException {
 
-        fxmlLoader = new FXMLLoader(SceneTest.class.getResource("Scene4.fxml"));
+        fxmlLoader = new FXMLLoader(getClass().getResource("Scene4.fxml"));
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         scene = new Scene(fxmlLoader.load());
         stage.setScene(scene);
@@ -53,7 +53,7 @@ public class SceneController {
 
     public void switchToHome(ActionEvent event) throws IOException {
 
-        fxmlLoader = new FXMLLoader(SceneTest.class.getResource("sample.fxml"));
+        fxmlLoader = new FXMLLoader(getClass().getResource("sample.fxml"));
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         scene = new Scene(fxmlLoader.load());
         stage.setScene(scene);
