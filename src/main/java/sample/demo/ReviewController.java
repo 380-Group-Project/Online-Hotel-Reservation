@@ -7,7 +7,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.RadioButton;
+import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -22,11 +22,16 @@ public class ReviewController {
     @FXML
     private Button confirm;
 
-    private Room selectedRoom;
+    @FXML
+    private TextField name;
+    @FXML
+    private TextField email;
+
+    private static Room selectedRoom;
     private static LocalDate startDate;
     private static LocalDate endDate;
-    static java.sql.Date sqlDateStart;
-    static java.sql.Date sqlDateEnd;
+    private static Date sqlDateStart;
+    private static Date sqlDateEnd;
 
     SceneController change = new SceneController();
 
@@ -35,30 +40,40 @@ public class ReviewController {
     public void initialize() {
 
         // Create a variable
-        String message = "You have selected ";
+        String message = "You have not selected a room.";
 
         // Set the text of the Label to the value of the variable
         myLabel.setText(message);
 
+        confirm.setVisible(false);
+        if(selectedRoom != null){
+            output();
+        }
+
         confirm.setOnAction(event -> {
-            reservations.reserve(selectedRoom.getRoomNumber(), "John Smith", selectedRoom.getBedNum(), sqlDateStart, sqlDateEnd);
-            System.out.println("SQL Date value: " + sqlDateStart.toString());
-            System.out.println("SQL Date value: " + sqlDateEnd.toString());
-            loadHome();
+
+            System.out.println("SQL Start Date value: " + sqlDateStart.toString());
+            System.out.println("SQL End Date value: " + sqlDateEnd.toString());
+            if (name != null){
+                System.out.println(reservations.reserve(selectedRoom.getRoomNumber(), name.getText(), selectedRoom.getBedNum(), sqlDateStart, sqlDateEnd));
+                selectedRoom = null;
+                loadHome();
+            }
+
 
         });
     }
 
     public void setRoom(Room selectedRoom) {
-        this.selectedRoom = selectedRoom;
+        ReviewController.selectedRoom = selectedRoom;
         output();
     }
 
     public static void setDates(LocalDate start, LocalDate end){
         startDate = start;
         endDate = end;
-        sqlDateStart = java.sql.Date.valueOf(start);
-        sqlDateEnd = java.sql.Date.valueOf(end);
+        sqlDateStart = Date.valueOf(start);
+        sqlDateEnd = Date.valueOf(end);
     }
 
     public void output(){
@@ -72,6 +87,7 @@ public class ReviewController {
 
         // Set the text of the Label to the value of the variable
         myLabel.setText(message);
+        confirm.setVisible(true);
     }
 
     private void loadHome() {
