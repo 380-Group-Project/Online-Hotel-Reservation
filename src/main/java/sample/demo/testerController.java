@@ -49,7 +49,7 @@ public class testerController {
                 root = FXMLLoader.load(getClass().getResource("ReviewTest.fxml"));
                 break;
             case "Cancel Room":
-                root = FXMLLoader.load((getClass().getResource("Scene4.fxml")));
+                root = FXMLLoader.load((getClass().getResource("CancelScene.fxml")));
                 break;
         }
 

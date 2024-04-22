@@ -71,7 +71,7 @@ public class Reservations
      * @param resId The ID of the reservation getting cancelled.
      */
     public void cancel(int resId){
-        String sql = "DELETE FROM reservations WHERE res_id = ?";
+        String sql = "DELETE FROM reservations WHERE res_num = ?";
         try (Connection conn = this.connect();
              PreparedStatement pstmt = conn.prepareStatement(sql)) {
             pstmt.setInt(1, resId);
@@ -81,6 +81,24 @@ public class Reservations
             System.out.println(e.getMessage());
         }
     }
+
+    /*public void update(int resId, int room,String name,int guests,Date inDate,Date outDate){
+        String sql = "UPDATE reservations SET room_num = ?, name = ?, guest_num = ?, check_in = ?, check_out = ? WHERE id = ?";
+
+        try (Connection conn = this.connect();
+             PreparedStatement pstmt = conn.prepareStatement(sql)) {
+            pstmt.setInt(1, room);
+            pstmt.setString(2, name);
+            pstmt.setInt(3, guests);
+            pstmt.setDate(4, inDate);
+            pstmt.setDate(5, outDate);
+            pstmt.executeUpdate();
+
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+
+    }*/
 
     /**
      * Returns information about the reservation with the corresponding ID
