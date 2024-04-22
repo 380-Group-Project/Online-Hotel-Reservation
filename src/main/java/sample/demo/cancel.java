@@ -20,7 +20,6 @@ public class cancel {
     Reservations reservations = new Reservations();
     SceneController change = new SceneController();
 
-    // Initialize method to set up event listeners
     @FXML
     private void initialize() {
         idField.setOnKeyPressed(event -> {
@@ -30,11 +29,9 @@ public class cancel {
             }
         });
 
-        // Bind Enter button click to handleEnter() method
         enterButton.setOnAction(event -> handleEnter());
     }
 
-    // Method to handle the Enter key press event or the Enter button click event
     private void handleEnter() {
         String idText = idField.getText();
         if (idText.isEmpty()) {
@@ -49,7 +46,6 @@ public class cancel {
 
     }
 
-    // Helper method to show alert dialog
     private void showAlert(String title, String message) {
         Alert alert = new Alert(Alert.AlertType.ERROR);
         alert.setTitle(title);
