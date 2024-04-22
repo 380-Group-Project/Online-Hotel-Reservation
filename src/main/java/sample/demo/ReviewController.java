@@ -14,6 +14,12 @@ import java.io.IOException;
 import java.sql.Date;
 import java.time.LocalDate;
 
+/**
+ *
+ * @author Seng Dieng
+ *
+ */
+
 public class ReviewController {
 
     @FXML
@@ -54,7 +60,7 @@ public class ReviewController {
 
             System.out.println("SQL Start Date value: " + sqlDateStart.toString());
             System.out.println("SQL End Date value: " + sqlDateEnd.toString());
-            if (name != null){
+            if (!name.getText().isEmpty()){
                 System.out.println(reservations.reserve(selectedRoom.getRoomNumber(), name.getText(), selectedRoom.getBedNum(), sqlDateStart, sqlDateEnd));
                 selectedRoom = null;
                 loadHome();
@@ -64,10 +70,23 @@ public class ReviewController {
         });
     }
 
+    /**
+     * Retrieves the selected room
+     *
+     * @param selectedRoom the room selected
+     */
+
     public void setRoom(Room selectedRoom) {
         ReviewController.selectedRoom = selectedRoom;
         output();
     }
+
+    /**
+     * Retrieves the selected dates
+     *
+     * @param start the selected starting date
+     * @param end the selected ending date
+     */
 
     public static void setDates(LocalDate start, LocalDate end){
         startDate = start;
@@ -75,6 +94,11 @@ public class ReviewController {
         sqlDateStart = Date.valueOf(start);
         sqlDateEnd = Date.valueOf(end);
     }
+
+    /**
+     * Outputs the selected room's values
+     *
+     */
 
     public void output(){
         String message = "You have selected " +
@@ -103,6 +127,12 @@ public class ReviewController {
             System.out.println(e.getMessage());
         }
     }
+
+    /**
+     * Changes the page to the Homepage
+     *
+     * @param event the current page
+     */
 
     public void switchToHome(ActionEvent event) throws IOException {
 

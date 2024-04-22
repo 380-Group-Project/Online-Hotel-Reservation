@@ -7,6 +7,12 @@ import javafx.scene.control.ChoiceBox;
 import javafx.stage.Stage;
 import java.io.IOException;
 
+/**
+ *
+ * @author Seng Dieng
+ *
+ */
+
 public class testerController {
 
     @FXML
@@ -23,6 +29,13 @@ public class testerController {
             }
         });
     }
+
+    /**
+     * Changes the page to scene1
+     *
+     * @param sceneName holds the selected option
+     *
+     */
 
     private void switchScene(String sceneName) throws IOException {
         Stage stage = (Stage) myChoiceBox.getScene().getWindow();

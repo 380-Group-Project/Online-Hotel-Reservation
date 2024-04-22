@@ -16,6 +16,12 @@ import java.io.IOException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
+/**
+ *
+ * @author Seng Dieng
+ *
+ */
+
 public class Scene2Controller {
 
     @FXML
@@ -57,6 +63,12 @@ public class Scene2Controller {
         });
     }
 
+    /**
+     * Changes the page with the selected option
+     *
+     * @param selectedOption the option selected
+     */
+
     private void loadScene3(String selectedOption) {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("Scene3.fxml"));
@@ -73,6 +85,12 @@ public class Scene2Controller {
             System.out.println(e.getMessage());
         }
     }
+
+    /**
+     * Changes the page to the Homepage
+     *
+     * @param event the current page
+     */
 
     public void switchToHome(ActionEvent event) throws IOException{
         change.switchToHome(event);

@@ -15,6 +15,12 @@ import javafx.scene.Scene;
 import java.io.IOException;
 import java.sql.*;
 
+/**
+ *
+ * @author Seng Dieng
+ *
+ */
+
 public class Scene3Controller {
 
     @FXML
@@ -38,11 +44,23 @@ public class Scene3Controller {
     }
 
 
+    /**
+     * Filters the options from the selected option
+     *
+     * @param option the selected option
+     */
+
     public void setOption(String option) {
         this.selectedOption = option;
         connectToDatabase();
     }
 
+
+
+    /**
+     * Retrieves data from the database
+     *
+     */
 
     private void connectToDatabase() {
         String url = "jdbc:sqlite:hotel.db";
@@ -81,6 +99,12 @@ public class Scene3Controller {
         }
     }
 
+    /**
+     * Shows the alert
+     *
+     * @param room the selected room from the selection
+     */
+
     private void showAlert(Room room) {
         Alert alert = getAlert(room);
 
@@ -98,6 +122,12 @@ public class Scene3Controller {
         });
     }
 
+    /**
+     * Sets the alert message
+     *
+     * @param room the room selected
+     */
+
     private static Alert getAlert(Room room) {
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setTitle("Confirmation");
@@ -113,6 +143,11 @@ public class Scene3Controller {
         return alert;
     }
 
+
+    /**
+     * Goes to the next scene
+     *
+     */
     private void nextScene(){
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("ReviewTest.fxml"));
@@ -128,13 +163,23 @@ public class Scene3Controller {
             System.out.println(e.getMessage());
         }
     }
-
+    /**
+     * Changes the page to the scene1
+     *
+     * @param event the current page
+     */
     public void switchToScene1(ActionEvent event) throws IOException {
 
         change.switchToScene1(event);
 
     }
 
+
+    /**
+     * Changes the page to the Homepage
+     *
+     * @param event the current page
+     */
     public void switchToHome(ActionEvent event) throws IOException {
 
         change.switchToHome(event);

@@ -2,6 +2,12 @@ package sample.demo;
 
 import java.time.LocalDate;
 
+/**
+ *
+ * @author Seng Dieng
+ *
+ */
+
 public class Room {
     private int roomNumber;
     private String roomType;
