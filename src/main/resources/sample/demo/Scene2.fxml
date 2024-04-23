@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.demo.Scene2Controller">
+   <children>
+      <RadioButton fx:id="basic" layoutX="152.0" layoutY="170.0" mnemonicParsing="false" text="basic" />
+      <RadioButton fx:id="family" layoutX="274.0" layoutY="170.0" mnemonicParsing="false" text="family" />
+      <RadioButton fx:id="suite" layoutX="416.0" layoutY="170.0" mnemonicParsing="false" text="suite" />
+      <Button fx:id="nextButton" layoutX="215.0" layoutY="235.0" mnemonicParsing="false" prefHeight="74.0" prefWidth="171.0" text="Next" />
+      <Label alignment="CENTER" layoutX="215.0" layoutY="75.0" prefHeight="37.0" prefWidth="171.0" text="Select a room type">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <DatePicker fx:id="startDatePicker" layoutX="33.0" layoutY="54.0" />
+      <DatePicker fx:id="endDatePicker" layoutX="409.0" layoutY="50.0" />
+      <Label layoutX="94.0" layoutY="33.0" text="Start Date" />
+      <Label layoutX="472.0" layoutY="33.0" text="End Date" />
+      <Button layoutX="215.0" layoutY="312.0" mnemonicParsing="false" onAction="#switchToHome" prefHeight="74.0" prefWidth="171.0" text="Home" />
+   </children>
+</AnchorPane>
