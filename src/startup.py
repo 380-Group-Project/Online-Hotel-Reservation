@@ -6,6 +6,9 @@ import time
 path = 'hotel.db'
 
 def setup():
+    """This method exists to expedite the creation of a fresh database to run tests on
+    as a broken database can often lead to unexpected behavior
+    """
     connection = sqlite3.connect(path)
     
     crsr = connection.cursor()

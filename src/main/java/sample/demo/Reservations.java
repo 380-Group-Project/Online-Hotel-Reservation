@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.Random;
 
 /**
+ * Class made primarily to handle making reservations in the hotel.db database.
  *
  * @author Jade Dergevorkian
  * @author Seng Dieng (edited)
