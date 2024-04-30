@@ -1,5 +1,6 @@
 package sample.demo;
 
+import java.sql.*;
 import java.time.LocalDate;
 
 /**
@@ -33,6 +34,43 @@ public class Room {
         this.bedNum = bedNum;
         this.price = price;
         this.reserved = reserved;
+    }
+
+    private Connection connect() {
+        // SQLite connection string
+        String url = "jdbc:sqlite:hotel.db";
+        Connection conn = null;
+        try {
+            conn = DriverManager.getConnection(url);
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        return conn;
+    }
+
+    /**
+     * Alternative constructor which takes the rest of the parameters directly from the database
+     * @param roomNumber The room number
+     */
+    public Room(int roomNumber) {
+        String sql = "SELECT room_type, bednum, price, reserved FROM room WHERE room_number = ?";
+        try(Connection conn = this.connect();
+            PreparedStatement pstmt = conn.prepareStatement(sql)){
+
+            pstmt.setInt(1,roomNumber);
+
+            ResultSet rs = pstmt.executeQuery();
+
+            this.roomNumber = roomNumber;
+            this.roomType = rs.getString("room_type");
+            this.bedNum = rs.getInt("bednum");
+            this.price = rs.getDouble("price");
+            this.reserved = rs.getBoolean("reserved");
+
+        }
+        catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
     }
 
     /**
