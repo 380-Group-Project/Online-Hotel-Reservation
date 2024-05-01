@@ -23,6 +23,7 @@ public class tester extends Application {
         }
 
         public static void main(String[] args) {
+            Startup.setup();
             launch(args);
         }
 
