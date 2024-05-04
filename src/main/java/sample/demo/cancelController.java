@@ -46,6 +46,11 @@ public class cancelController {
             return;
         }
 
+        if (!idText.matches("\\d+")) {
+            showAlert("Error", "ID must contain only numbers");
+            return;
+        }
+
         int id = Integer.parseInt(idText);
 
         if(reservations.cancel(id)){
