@@ -71,20 +71,22 @@ public class Reservations
      *
      * @param resId The ID of the reservation getting cancelled.
      */
-    public void cancel(int resId){
+    public boolean cancel(int resId){
         String sql = "DELETE FROM reservations WHERE res_num = ?";
         try (Connection conn = this.connect();
              PreparedStatement pstmt = conn.prepareStatement(sql)) {
             pstmt.setInt(1, resId);
             pstmt.executeUpdate();
+            return true;
 
         } catch (SQLException e) {
             System.out.println(e.getMessage());
+            return false;
         }
     }
 
-    /*public void update(int resId, int room,String name,int guests,Date inDate,Date outDate){
-        String sql = "UPDATE reservations SET room_num = ?, name = ?, guest_num = ?, check_in = ?, check_out = ? WHERE id = ?";
+    public void update(int resId, int room,String name,int guests,Date inDate,Date outDate){
+        String sql = "UPDATE reservations SET room_num = ?, name = ?, guest_num = ?, check_in = ?, check_out = ? WHERE res_num = ?";
 
         try (Connection conn = this.connect();
              PreparedStatement pstmt = conn.prepareStatement(sql)) {
@@ -93,13 +95,14 @@ public class Reservations
             pstmt.setInt(3, guests);
             pstmt.setDate(4, inDate);
             pstmt.setDate(5, outDate);
+            pstmt.setInt(6, resId);
             pstmt.executeUpdate();
 
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
 
-    }*/
+    }
 
     /**
      * Returns information about the reservation with the corresponding ID
@@ -108,7 +111,7 @@ public class Reservations
      */
     public ArrayList<Object> getReservation(int resId){
         ArrayList<Object> resList = new ArrayList<>();
-        String sql = "SELECT * FROM reservations WHERE res_num = ?";
+        String sql = "SELECT res_num, room_num, name, guest_num, check_in, check_out FROM reservations WHERE res_num = ?";
         try (Connection conn = this.connect();
             PreparedStatement pstmt = conn.prepareStatement(sql)) {
             pstmt.setInt(1, resId);
@@ -119,8 +122,10 @@ public class Reservations
                 resList.add(rs.getInt("room_num"));
                 resList.add(rs.getString("name"));
                 resList.add(rs.getInt("guest_num"));
-                resList.add(rs.getString("check_in"));
-                resList.add(rs.getString("check_out"));
+                Date checkInDate = new Date(rs.getLong("check_in"));
+                resList.add(checkInDate);
+                Date checkOutDate = new Date(rs.getLong("check_out"));
+                resList.add(checkOutDate);
             }
             return resList;
 
