@@ -108,7 +108,7 @@ public class Reservations
      */
     public ArrayList<Object> getReservation(int resId){
         ArrayList<Object> resList = new ArrayList<>();
-        String sql = "SELECT FROM reservations WHERE res_id = ?";
+        String sql = "SELECT * FROM reservations WHERE res_num = ?";
         try (Connection conn = this.connect();
             PreparedStatement pstmt = conn.prepareStatement(sql)) {
             pstmt.setInt(1, resId);
@@ -119,8 +119,8 @@ public class Reservations
                 resList.add(rs.getInt("room_num"));
                 resList.add(rs.getString("name"));
                 resList.add(rs.getInt("guest_num"));
-                resList.add(rs.getDate("check_in"));
-                resList.add(rs.getDate("check_in"));
+                resList.add(rs.getString("check_in"));
+                resList.add(rs.getString("check_out"));
             }
             return resList;
 

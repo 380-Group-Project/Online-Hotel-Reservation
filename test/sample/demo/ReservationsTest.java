@@ -4,6 +4,8 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -62,7 +64,7 @@ public class ReservationsTest {
         String sql = "SELECT room_num, name, guest_num, check_in, check_out FROM reservations WHERE res_num = ?";
 
         try (Connection conn = this.connect();
-             PreparedStatement pstmt = conn.prepareStatement(sql)) {
+            PreparedStatement pstmt = conn.prepareStatement(sql)) {
             pstmt.setInt(1, id);
             ResultSet rs = pstmt.executeQuery();
             ResultSet rs1 = conn.prepareStatement("SELECT room_num, name, guest_num, check_in, check_out FROM reservations WHERE res_num = 0").executeQuery();
@@ -74,6 +76,41 @@ public class ReservationsTest {
             System.out.println(e.getMessage());
         }
 
+    }
+
+    @Test
+    public void testCancel(){
+        clean();
+
+        Reservations rez = new Reservations();
+        rez.cancel(0);
+        try (Connection conn = this.connect()){
+            ResultSet rs = conn.prepareStatement("SELECT room_num FROM reservations WHERE res_num = 0").executeQuery();
+            assertEquals(0,rs.getInt("room_num"));
+        }
+        catch(SQLException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
+    @Test
+    public void testGetReservation(){
+        clean();
+
+        Reservations rez = new Reservations();
+        ArrayList<Object> rezList = rez.getReservation(0);
+        try (Connection conn = this.connect()){
+            ResultSet rs = conn.prepareStatement("SELECT * FROM reservations WHERE res_num = 0").executeQuery();
+            assertEquals(rezList.get(0),rs.getInt("res_num"));
+            assertEquals(rezList.get(1),rs.getInt("room_num"));
+            assertEquals(rezList.get(2),rs.getString("name"));
+            assertEquals(rezList.get(3),rs.getInt("guest_num"));
+            assertEquals(rezList.get(4),rs.getString("check_in"));
+
+        }
+        catch(SQLException e) {
+            System.out.println(e.getMessage());
+        }
     }
 
 }
