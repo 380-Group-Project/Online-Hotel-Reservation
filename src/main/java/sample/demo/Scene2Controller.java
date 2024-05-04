@@ -17,6 +17,7 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
 /**
+ *This class exists to control Scene2.
  *
  * @author Seng Dieng
  *
@@ -55,7 +56,7 @@ public class Scene2Controller {
             LocalDate startDate = startDatePicker.getValue();
             LocalDate endDate = endDatePicker.getValue();
             RadioButton selectedRadioButton = (RadioButton) toggleGroup.getSelectedToggle();
-            if (selectedRadioButton != null && startDate != null && endDate != null) {
+            if (selectedRadioButton != null && startDate != null && endDate != null && startDate.isBefore(endDate)) {
                 ReviewController.setDates(startDate, endDate);
                 String selectedOption = selectedRadioButton.getText();
                 loadScene3(selectedOption);
