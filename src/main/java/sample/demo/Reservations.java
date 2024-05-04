@@ -110,7 +110,7 @@ public class Reservations
         ArrayList<Object> resList = new ArrayList<>();
         String sql = "SELECT FROM reservations WHERE res_id = ?";
         try (Connection conn = this.connect();
-             PreparedStatement pstmt = conn.prepareStatement(sql)) {
+            PreparedStatement pstmt = conn.prepareStatement(sql)) {
             pstmt.setInt(1, resId);
             ResultSet rs = pstmt.executeQuery();
 
