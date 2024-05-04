@@ -9,7 +9,14 @@ import javafx.scene.input.KeyCode;
 
 import java.io.IOException;
 
-public class cancel {
+
+/**
+ *This class exists primarily to control the cancel scene.
+ * @author Seng Dieng
+ */
+
+
+public class cancelController {
 
     @FXML
     private TextField idField;
@@ -41,7 +48,12 @@ public class cancel {
 
         int id = Integer.parseInt(idText);
 
-        reservations.cancel(id);
+        if(reservations.cancel(id)){
+            showAlert("Success", "Reservation with ID " + id + " has been successfully canceled.");
+        }
+        else {
+            showAlert("Error", "No record found with ID: " + id);
+        }
 
 
     }
@@ -56,6 +68,10 @@ public class cancel {
 
     public void switchToHome(ActionEvent event) throws IOException {
         change.switchToHome(event);
+    }
+
+    public void cancelCurrent(){
+        ReviewController.selectedRoom = null;
     }
 }
 
