@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.Random;
 
 /**
- * This class exists primarily to store information about rooms which are being reserved/viewed.
+ * Class made primarily to handle making reservations in the hotel.db database.
  *
  * @author Jade Dergevorkian
  * @author Seng Dieng (edited)
