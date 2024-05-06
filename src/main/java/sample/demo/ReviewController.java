@@ -73,17 +73,14 @@ public class ReviewController {
                 int generated_id = reservations.reserve(selectedRoom.getRoomNumber(), name.getText(), selectedRoom.getBedNum(), sqlDateStart, sqlDateEnd);
                 System.out.println(generated_id);
                 String text = "Successfully reserved, your id number is: " + generated_id;
-                Dialog<ButtonType> dialog = new Dialog<>();
-                dialog.setTitle("Success");
-                dialog.setHeaderText(null);
-
                 TextArea textArea = new TextArea(text);
                 textArea.setEditable(false);
                 textArea.setWrapText(true);
 
-                dialog.getDialogPane().setContent(textArea);
-                dialog.getDialogPane().getButtonTypes().add(ButtonType.CLOSE);
-                dialog.showAndWait();
+                Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+                alert.setTitle("Success");
+                alert.getDialogPane().setContent(textArea);
+                alert.showAndWait();
 
                 selectedRoom = null;
                 loadHome();
