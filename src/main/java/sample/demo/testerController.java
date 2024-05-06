@@ -8,7 +8,7 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 /**
- *
+ *This class exists to control the Homepage scene.
  * @author Seng Dieng
  *
  */
@@ -20,7 +20,7 @@ public class testerController {
 
     @FXML
     private void initialize() {
-        myChoiceBox.getItems().addAll("Select room type","Review Room", "Cancel Room");
+        myChoiceBox.getItems().addAll("Select room type","Review Room", "Cancel Room", "Update");
         myChoiceBox.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
             try {
                 switchScene(newValue);
@@ -50,6 +50,9 @@ public class testerController {
                 break;
             case "Cancel Room":
                 root = FXMLLoader.load((getClass().getResource("CancelScene.fxml")));
+                break;
+            case "Update":
+                root = FXMLLoader.load(getClass().getResource("UpdateScene.fxml"));
                 break;
         }
 
