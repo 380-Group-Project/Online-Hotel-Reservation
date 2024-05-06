@@ -77,6 +77,9 @@ public class cancelController {
 
     public void cancelCurrent(){
         ReviewController.selectedRoom = null;
+        if(ReviewController.id != -1){
+            ReviewController.id = -1;
+        }
     }
 }
 
