@@ -16,6 +16,7 @@ import java.io.IOException;
 import java.sql.*;
 
 /**
+ *This class exists to control Scene3.
  *
  * @author Seng Dieng
  *
