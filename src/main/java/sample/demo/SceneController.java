@@ -9,7 +9,7 @@ import javafx.stage.Stage;
 
 
 /**
- *
+ *This class exists primarily to control the scenes that is viewing.
  * @author Seng Dieng
  */
 
