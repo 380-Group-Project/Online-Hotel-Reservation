@@ -11,17 +11,11 @@
       <Label fx:id="myLabel" alignment="CENTER" layoutX="56.0" layoutY="24.0" prefHeight="216.0" prefWidth="185.0" text="Filler" />
       <Button layoutX="222.0" layoutY="327.0" mnemonicParsing="false" onAction="#switchToHome" prefHeight="51.0" prefWidth="156.0" text="Return Home" />
       <Button fx:id="confirm" layoutX="222.0" layoutY="264.0" mnemonicParsing="false" prefHeight="51.0" prefWidth="156.0" text="Confirm" />
-      <TextField fx:id="name" layoutX="380.0" layoutY="72.0" />
-      <Label layoutX="390.0" layoutY="35.0" text="Enter your name">
+      <TextField fx:id="name" layoutX="302.0" layoutY="132.0" />
+      <Label layoutX="313.0" layoutY="105.0" text="Enter your name">
          <font>
             <Font size="18.0" />
          </font>
       </Label>
-      <Label layoutX="390.0" layoutY="132.0" text="Enter your email">
-         <font>
-            <Font size="18.0" />
-         </font>
-      </Label>
-      <TextField fx:id="email" layoutX="380.0" layoutY="174.0" />
    </children>
 </AnchorPane>
