@@ -5,10 +5,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -36,7 +33,7 @@ public class ReviewController {
     private TextField email;
 
     @FXML
-    private static int id = -1;
+    public static int id = -1;
 
     public static Room selectedRoom;
     private static LocalDate startDate;
@@ -75,16 +72,30 @@ public class ReviewController {
             if (!name.getText().isEmpty() && id == -1){
                 int generated_id = reservations.reserve(selectedRoom.getRoomNumber(), name.getText(), selectedRoom.getBedNum(), sqlDateStart, sqlDateEnd);
                 System.out.println(generated_id);
-                Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-                alert.setTitle("Success");
-                alert.setHeaderText(null);
-                alert.setContentText("Successfully reserved, your id number is: " + generated_id);
-                alert.showAndWait();
+                String text = "Successfully reserved, your id number is: " + generated_id;
+                Dialog<ButtonType> dialog = new Dialog<>();
+                dialog.setTitle("Success");
+                dialog.setHeaderText(null);
+
+                TextArea textArea = new TextArea(text);
+                textArea.setEditable(false);
+                textArea.setWrapText(true);
+
+                dialog.getDialogPane().setContent(textArea);
+                dialog.getDialogPane().getButtonTypes().add(ButtonType.CLOSE);
+                dialog.showAndWait();
+
                 selectedRoom = null;
                 loadHome();
             }
             if(!name.getText().isEmpty() && id != -1){
                 reservations.update(id, selectedRoom.getRoomNumber(), name.getText(), selectedRoom.getBedNum(), sqlDateStart, sqlDateEnd);
+
+                Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+                alert.setTitle("Success");
+                alert.setHeaderText(null);
+                alert.setContentText("Successfully updated with the id number: " + id);
+                alert.showAndWait();
                 id = -1;
                 selectedRoom = null;
                 loadHome();
