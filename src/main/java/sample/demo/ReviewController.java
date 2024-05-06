@@ -5,6 +5,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -15,6 +16,7 @@ import java.sql.Date;
 import java.time.LocalDate;
 
 /**
+ *This class exists to control the review scene.
  *
  * @author Seng Dieng
  *
@@ -33,7 +35,10 @@ public class ReviewController {
     @FXML
     private TextField email;
 
-    private static Room selectedRoom;
+    @FXML
+    private static int id = -1;
+
+    public static Room selectedRoom;
     private static LocalDate startDate;
     private static LocalDate endDate;
     private static Date sqlDateStart;
@@ -60,8 +65,27 @@ public class ReviewController {
 
             System.out.println("SQL Start Date value: " + sqlDateStart.toString());
             System.out.println("SQL End Date value: " + sqlDateEnd.toString());
-            if (!name.getText().isEmpty()){
-                System.out.println(reservations.reserve(selectedRoom.getRoomNumber(), name.getText(), selectedRoom.getBedNum(), sqlDateStart, sqlDateEnd));
+            if (name.getText().isEmpty()) {
+                Alert alert = new Alert(Alert.AlertType.WARNING);
+                alert.setTitle("Input Required");
+                alert.setHeaderText(null);
+                alert.setContentText("Please enter your name");
+                alert.showAndWait();
+            }
+            if (!name.getText().isEmpty() && id == -1){
+                int generated_id = reservations.reserve(selectedRoom.getRoomNumber(), name.getText(), selectedRoom.getBedNum(), sqlDateStart, sqlDateEnd);
+                System.out.println(generated_id);
+                Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+                alert.setTitle("Success");
+                alert.setHeaderText(null);
+                alert.setContentText("Successfully reserved, your id number is: " + generated_id);
+                alert.showAndWait();
+                selectedRoom = null;
+                loadHome();
+            }
+            if(!name.getText().isEmpty() && id != -1){
+                reservations.update(id, selectedRoom.getRoomNumber(), name.getText(), selectedRoom.getBedNum(), sqlDateStart, sqlDateEnd);
+                id = -1;
                 selectedRoom = null;
                 loadHome();
             }
@@ -95,6 +119,10 @@ public class ReviewController {
         sqlDateEnd = Date.valueOf(end);
     }
 
+    public void setId(int id){
+        ReviewController.id = id;
+    }
+
     /**
      * Outputs the selected room's values
      *
@@ -109,7 +137,6 @@ public class ReviewController {
                 "\nstarting on " + startDate.toString() +
                 "\nending on " + endDate.toString();
 
-        // Set the text of the Label to the value of the variable
         myLabel.setText(message);
         confirm.setVisible(true);
     }
