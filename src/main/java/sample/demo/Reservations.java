@@ -76,8 +76,7 @@ public class Reservations
         try (Connection conn = this.connect();
              PreparedStatement pstmt = conn.prepareStatement(sql)) {
             pstmt.setInt(1, resId);
-            pstmt.executeUpdate();
-            return true;
+            return pstmt.executeUpdate() != 0;
 
         } catch (SQLException e) {
             System.out.println(e.getMessage());
