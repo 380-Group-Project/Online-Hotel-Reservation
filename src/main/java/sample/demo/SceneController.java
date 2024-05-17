@@ -82,6 +82,19 @@ public class SceneController {
     }
 
     /**
+     * Changes the page to Manager
+     *
+     * @param event the current page
+     */
+    public void switchToManager(ActionEvent event) throws IOException{
+        fxmlLoader = new FXMLLoader(getClass().getResource("Manager.fxml"));
+        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        scene = new Scene(fxmlLoader.load());
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    /**
      * Changes the page to the Homepage
      *
      * @param event the current page
