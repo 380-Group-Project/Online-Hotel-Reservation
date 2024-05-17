@@ -1,4 +1,5 @@
 package sample.demo;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -17,6 +18,8 @@ public class testerController {
 
     @FXML
     private ChoiceBox<String> myChoiceBox;
+
+    SceneController sceneController = new SceneController();
 
     @FXML
     private void initialize() {
@@ -59,5 +62,9 @@ public class testerController {
         Scene scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
+    }
+
+    public void switchToManager(ActionEvent event) throws IOException {
+        sceneController.switchToManager(event);
     }
 }
