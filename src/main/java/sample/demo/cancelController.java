@@ -30,7 +30,6 @@ public class cancelController {
     @FXML
     private void initialize() {
         idField.setOnKeyPressed(event -> {
-            // Check if the pressed key is Enter
             if (event.getCode() == KeyCode.ENTER) {
                 handleEnter();
             }
@@ -71,10 +70,19 @@ public class cancelController {
         alert.showAndWait();
     }
 
+    /**
+     * Changes the page to the Homepage
+     *
+     * @param event the current page
+     */
+
     public void switchToHome(ActionEvent event) throws IOException {
         change.switchToHome(event);
     }
 
+    /**
+     * Changes the id value in ReviewController
+     */
     public void cancelCurrent(){
         ReviewController.selectedRoom = null;
         if(ReviewController.id != -1){

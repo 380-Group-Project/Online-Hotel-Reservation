@@ -10,10 +10,15 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
-
-import java.sql.Date;
 import java.util.ArrayList;
 import java.io.IOException;
+
+/**
+ *This class exists to control the update scene.
+ *
+ * @author Seng Dieng
+ *
+ */
 
 public class UpdateController {
     Reservations reservations = new Reservations();
@@ -23,16 +28,11 @@ public class UpdateController {
 
     @FXML
     private TextField text;
-    @FXML
-    private Button enter;
-    @FXML
-    private Button home;
-
-    public void initialize() {
-
-    }
 
 
+    /**
+     * Handles when the enter button is clicked on
+     */
     public void handleEnter() {
             int resId = Integer.parseInt(text.getText());
             ArrayList<Object> reservation = reservations.getReservation(resId);
@@ -83,7 +83,11 @@ public class UpdateController {
         }
     }
 
-
+    /**
+     * Changes the page to the Homepage
+     *
+     * @param event the current page
+     */
     public void switchToHome(ActionEvent event) throws IOException {
         change.switchToHome(event);
     }

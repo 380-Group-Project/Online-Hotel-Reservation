@@ -64,6 +64,12 @@ public class testerController {
         stage.show();
     }
 
+    /**
+     * Changes the page to Manager
+     *
+     * @param event holds the selected option
+     *
+     */
     public void switchToManager(ActionEvent event) throws IOException {
         sceneController.switchToManager(event);
     }

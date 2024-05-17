@@ -6,6 +6,12 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
+
+/**
+ *This class exists to control the backend of the Manager scene.
+ * @author Seng Dieng
+ *
+ */
 public class ManagerBackend {
 
     private static final String DB_URL = "jdbc:sqlite:hotel.db";

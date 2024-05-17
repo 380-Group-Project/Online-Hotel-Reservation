@@ -29,8 +29,6 @@ public class ReviewController {
 
     @FXML
     private TextField name;
-    @FXML
-    private TextField email;
 
     @FXML
     public static int id = -1;
@@ -45,12 +43,15 @@ public class ReviewController {
 
     Reservations reservations = new Reservations();
 
+    /**
+     * Handles the messages and alerts
+     *
+     */
+
     public void initialize() {
 
-        // Create a variable
         String message = "You have not selected a room.";
 
-        // Set the text of the Label to the value of the variable
         myLabel.setText(message);
 
         confirm.setVisible(false);

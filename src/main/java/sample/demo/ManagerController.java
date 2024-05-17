@@ -11,6 +11,13 @@ import java.sql.SQLException;
 import java.util.Date;
 import java.text.SimpleDateFormat;
 
+/**
+ *This class exists to control the Manager scene.
+ *
+ * @author Seng Dieng
+ *
+ */
+
 public class ManagerController {
 
 
@@ -61,6 +68,11 @@ public class ManagerController {
         }
     }
 
+    /**
+     * Changes the page to the Homepage
+     *
+     * @param event the current page
+     */
     public void switchToHome(ActionEvent event) throws IOException {
         sceneController.switchToHome(event);
     }
